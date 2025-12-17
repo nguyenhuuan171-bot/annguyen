@@ -1,35 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Elastic Pull Cord</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Thông tin người dùng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .gender {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+
+    .gender label {
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      background: #e9f5ff;
+      padding: 10px;
+      border-radius: 6px;
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
 
-<svg width="300" height="500" viewBox="0 0 300 500">
+<div class="form-box">
+  <h2>Thông tin cá nhân</h2>
 
-  <!-- bóng đèn -->
-  <g id="bulb">
-    <ellipse cx="150" cy="200" rx="60" ry="80" fill="#555"/>
-    <rect x="120" y="270" width="60" height="25" fill="#777"/>
-    <rect x="115" y="295" width="70" height="10" fill="#666"/>
-  </g>
-    <ellipse id="bulbGlass" cx="150" cy="200" rx="60" ry="80" fill="#555"/>
+  <label>Họ và tên</label>
+  <input type="text" id="name" placeholder="Nhập họ tên">
 
-  <!-- dây (path để biến dạng) -->
-  <path id="cord"
-    d="M150 305 Q150 340 150 380"
-    stroke="white"
-    stroke-width="4"
-    fill="none"
-  />
+  <label>Giới tính</label>
+  <div class="gender">
+    <label><input type="radio" name="gender" value="Nam"> Nam</label>
+    <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+    <label><input type="radio" name="gender" value="Khác"> Khác</label>
+  </div>
 
-  <!-- núm kéo -->
-  <circle id="handle" cx="150" cy="380" r="12" fill="white"/>
+  <label>Nghề nghiệp</label>
+  <input type="text" id="job" placeholder="Ví dụ: Sinh viên, Kỹ sư">
 
-</svg>
+  <label>Học vấn</label>
+  <select id="education">
+    <option value="">-- Chọn học vấn --</option>
+    <option>THPT</option>
+    <option>Cao đẳng</option>
+    <option>Đại học</option>
+    <option>Sau đại học</option>
+  </select>
 
-<script src="script.js"></script>
+  <label>Đối tượng yêu thích</label>
+  <select id="favorite">
+    <option value="">-- Chọn --</option>
+    <option>Âm nhạc</option>
+    <option>Thể thao</option>
+    <option>Công nghệ</option>
+    <option>Du lịch</option>
+    <option>Game</option>
+    <option>đẹp trai, khoai to, 6 múi</option>
+    <option>hiền lành ,chất phác, tài giỏi</option>
+  </select>
+
+  <button onclick="showInfo()">Gửi thông tin</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function showInfo() {
+  const name = document.getElementById("name").value;
+  const job = document.getElementById("job").value;
+  const education = document.getElementById("education").value;
+  const favorite = document.getElementById("favorite").value;
+
+  const genderInput = document.querySelector('input[name="gender"]:checked');
+  const gender = genderInput ? genderInput.value : "Chưa chọn";
+
+  const result = document.getElementById("result");
+  result.style.display = "block";
+  result.innerHTML = `
+    <b>Họ tên:</b> ${name}<br>
+    <b>Giới tính:</b> ${gender}<br>
+    <b>Nghề nghiệp:</b> ${job}<br>
+    <b>Học vấn:</b> ${education}<br>
+    <b>Yêu thích:</b> ${favorite}
+  `;
+}
+</script>
+
 </body>
 </html>
