@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elastic Pull Cord</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="300" height="500" viewBox="0 0 300 500">
+
+  <!-- bóng đèn -->
+  <g id="bulb">
+    <ellipse cx="150" cy="200" rx="60" ry="80" fill="#555"/>
+    <rect x="120" y="270" width="60" height="25" fill="#777"/>
+    <rect x="115" y="295" width="70" height="10" fill="#666"/>
+  </g>
+    <ellipse id="bulbGlass" cx="150" cy="200" rx="60" ry="80" fill="#555"/>
+
+  <!-- dây (path để biến dạng) -->
+  <path id="cord"
+    d="M150 305 Q150 340 150 380"
+    stroke="white"
+    stroke-width="4"
+    fill="none"
+  />
+
+  <!-- núm kéo -->
+  <circle id="handle" cx="150" cy="380" r="12" fill="white"/>
+
+</svg>
+
+<script src="script.js"></script>
+</body>
+</html>
